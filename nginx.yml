@@ -1,0 +1,86 @@
+- name: Install and configure Nginx with styled page
+  hosts: web
+  become: yes
+
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Create custom styled index page
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Ansible Deployment 🚀</title>
+            <style>
+              body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+              }
+
+              .container {
+                text-align: center;
+                background: rgba(0,0,0,0.3);
+                padding: 40px;
+                border-radius: 15px;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+                animation: fadeIn 2s ease-in-out;
+              }
+
+              h1 {
+                font-size: 3rem;
+                margin-bottom: 20px;
+                text-shadow: 2px 2px 8px #000;
+              }
+
+              p {
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+              }
+
+              .status {
+                font-size: 1.5rem;
+                margin-top: 20px;
+                background: #ff6f61;
+                padding: 10px 20px;
+                border-radius: 10px;
+                display: inline-block;
+                box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+              }
+
+              @keyframes fadeIn {
+                from {opacity: 0;}
+                to {opacity: 1;}
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <h1>Deployed by Ansible!</h1>
+              <p>Status: Fully Automated Deployment</p>
+              <p>Public IP: 16.16.64.60</p>
+              <p>Project: DevOps Test Web App</p>
+              <div class="status">Live & Running</div>
+            </div>
+          </body>
+          </html>
+
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
