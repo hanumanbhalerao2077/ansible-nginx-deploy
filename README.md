@@ -1,10 +1,10 @@
-# Ansible Nginx Deploy 🚀
+# Ansible Nginx Deploy 
 
 Automated deployment of a styled web page on AWS EC2 using **Ansible**.
 
 ---
 
-## 🌟 Project Overview
+##  Project Overview
 - Installs **Nginx** on Ubuntu EC2
 - Deploys a **colorful, styled HTML page**
 - Shows **deployment status, project info, public IP**
@@ -18,7 +18,7 @@ Automated deployment of a styled web page on AWS EC2 using **Ansible**.
 
 ---
 
-## 🛠️ How to Run
+##  How to Run
 
 1. Clone this repository:
 
